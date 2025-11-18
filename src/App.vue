@@ -1,13 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NavBar from './components/NavBar.vue';
+</script>
 
 <template>
-  <header>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/search">Search</RouterLink>
-  </header>
+  <NavBar />
   <main>
     <RouterView />
   </main>
 </template>
-
-<style scoped></style>
+<style>
+body {
+  background-color: #0D0D0F;
+}
+</style>
