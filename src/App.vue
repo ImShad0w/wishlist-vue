@@ -8,8 +8,3 @@ import NavBar from './components/NavBar.vue';
     <RouterView />
   </main>
 </template>
-<style>
-body {
-  background-color: #1F1F1F;
-}
-</style>
