@@ -1,4 +1,5 @@
 <template>
-  <h1 class="">This is the search!</h1>
+  <h1 class="text-amber-100">Search for new anime!</h1>
+  <div class="bg-white w-screen "></div>
 </template>
-<script lang="ts"></script>
+<script setup lang="ts"></script>

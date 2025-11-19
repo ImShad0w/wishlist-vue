@@ -1,4 +1,18 @@
 {
+  "compilerOptions": {
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "noImplicitAny": true,
+    "jsx": "preserve",
+    "sourceMap": true
+  },
   "files": [],
   "references": [
     {
@@ -9,3 +23,4 @@
     }
   ]
 }
+
