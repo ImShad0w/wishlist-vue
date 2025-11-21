@@ -5,8 +5,9 @@
       {{ props.anime.title }}
     </h2>
     <div class="flex gap-1">
-      <button class="bg-cyan-200 p-2 rounded-lg" @click="openAnimeDetails">See more</button>
-      <button class="bg-purple-300 p-2 rounded-lg">Add to wishlist</button>
+      <button class="bg-cyan-200 p-2 rounded-lg" @click="openAnimeDetails(props.anime)">See more</button>
+      <!--Will pass down if the button adds or removes from wishlist-->
+      <slot name="wishlistButton" />
     </div>
   </div>
 </template>
@@ -14,9 +15,13 @@
 <script setup lang="ts">
 import type { Anime } from "@tutkli/jikan-ts";
 import router from "@/router/router.ts"
-const props = defineProps<{ anime: Anime }>();
+import { useAnimeStore } from "@/stores/animeStore";
 
-function openAnimeDetails(): void {
-  router.push({ path: `/search/${props.anime.mal_id}` })
+const props = defineProps<{ anime: Anime }>();
+const animeStore = useAnimeStore()
+
+function openAnimeDetails(anime: Anime): void {
+  animeStore.setCurrentAnime(anime);
+  router.push({ path: `/search/${anime.mal_id}` })
 }
 </script>

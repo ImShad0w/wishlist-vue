@@ -8,9 +8,8 @@ import AnimeFullCard from "@/components/AnimeFullCard.vue";
 const routes = [
   { path: '/', component: HomeView },
   { path: '/search', component: SearchView },
-  { path: '/search/:id', component: AnimeFullCard },
+  { path: '/search/:id', component: AnimeFullCard, props: true },
   { path: '/favorites', component: FavView },
-  { path: '/favorites/:id', component: AnimeFullCard },
 ]
 
 const Router = createRouter({

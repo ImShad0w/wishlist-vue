@@ -11,7 +11,18 @@
       <p>No results found on your Anime!</p>
     </div>
     <div v-else class="grid grid-cols-5 w-10/12 gap-5">
-      <AnimeCard v-for="anime in results" :key="anime.mal_id" :anime="anime" />
+      <AnimeCard v-for="anime in results" :key="anime.mal_id" :anime="anime">
+        <template #wishlistButton>
+          <button v-if="animeStore.isInWishlist(anime.mal_id)" @click="animeStore.removeFromWishlist(anime)"
+            class="bg-red-500 p-2 rounded-lg">
+            Remove
+          </button>
+
+          <button v-else @click="animeStore.addToWishlist(anime)" class="bg-purple-300 p-2 rounded-lg">
+            Add to wishlist
+          </button>
+        </template>
+      </AnimeCard>
     </div>
   </div>
 </template>
@@ -22,11 +33,12 @@ import AnimeCard from "@/components/AnimeCard.vue";
 import type { Anime } from "@tutkli/jikan-ts";
 //The client of axios to query
 import { JikanClient } from "@tutkli/jikan-ts";
+import { useAnimeStore } from "@/stores/animeStore";
+const animeStore = useAnimeStore();
 
 //Typed variables
 const query = ref<string>("");
 const results = ref<Anime[]>([]);
-
 //Query of the text
 async function queryAnimes(searchText: string) {
   const jikan = new JikanClient();
